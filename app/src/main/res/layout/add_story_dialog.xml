@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/storyEt"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RadioGroup
+        android:layout_width="0dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/storyEt">
+
+        <RadioButton
+            android:id="@+id/depressedRbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:drawableTop="@android:drawable/btn_radio"
+            android:drawablePadding="-20dp"
+            android:gravity="center"
+            android:text="Depressed" />
+
+        <RadioButton
+            android:id="@+id/sadRbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:drawableTop="@android:drawable/btn_radio"
+            android:drawablePadding="-20dp"
+            android:gravity="center"
+            android:text="Sad" />
+
+        <RadioButton
+            android:id="@+id/sosoRbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:checked="true"
+            android:drawableTop="@android:drawable/btn_radio"
+            android:drawablePadding="-20dp"
+            android:gravity="center"
+            android:text="So so" />
+
+        <RadioButton
+            android:id="@+id/goodRbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:drawableTop="@android:drawable/btn_radio"
+            android:drawablePadding="-20dp"
+            android:gravity="center"
+            android:text="Good" />
+
+        <RadioButton
+            android:id="@+id/happyRbtn"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="20"
+            android:background="@android:color/transparent"
+            android:button="@android:color/transparent"
+            android:drawableTop="@android:drawable/btn_radio"
+            android:drawablePadding="-20dp"
+            android:gravity="center"
+            android:text="Happy" />
+    </RadioGroup>
+
+</android.support.constraint.ConstraintLayout>
