@@ -3,6 +3,7 @@ package com.example.a9onhud.theemotionaldiary;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -40,6 +42,14 @@ public class TabFragment1 extends Fragment {
         currentDate = new SimpleDateFormat("dd/MM/yyyy").format(new Date());
         db = EventDatabase.getEventDatabase(getActivity());
         eventList = db.daoAccess().getEventsByDate(currentDate);
+
+
+
+
+//        makeDummyData();
+
+
+
 
         gestureDetector = new GestureDetector(getActivity(), new GestureDetector.OnGestureListener() {
 
@@ -78,7 +88,7 @@ public class TabFragment1 extends Fragment {
 
                                 TextView storyTv = v.findViewById(R.id.storyTv);
                                 TextView timeTv = v.findViewById(R.id.timeTv);
-                                TextView emoTv = v.findViewById(R.id.emoTv);
+                                ImageView emoIv = v.findViewById(R.id.emoIv);
 
                                 storyTv.setText(storyEt.getText().toString());
 
@@ -88,27 +98,33 @@ public class TabFragment1 extends Fragment {
                                 RadioButton goodRbtn = dialog.findViewById(R.id.goodRbtn);
                                 RadioButton happyRbtn = dialog.findViewById(R.id.happyRbtn);
 
+                                Drawable drawable = null;
                                 String feeling = "";
-                                if (depressedRbtn.isChecked())
+                                if (depressedRbtn.isChecked()) {
                                     feeling = "Depressed";
-                                else if (sadRbtn.isChecked())
+                                    drawable = getContext().getResources().getDrawable(R.drawable.ic_action_depressed, getContext().getTheme());
+                                }else if (sadRbtn.isChecked()) {
                                     feeling = "Sad";
-                                else if (sosoRbtn.isChecked())
+                                    drawable = getContext().getResources().getDrawable(R.drawable.ic_action_sad, getContext().getTheme());
+                                }else if (sosoRbtn.isChecked()) {
                                     feeling = "Soso";
-                                else if (goodRbtn.isChecked())
+                                    drawable = getContext().getResources().getDrawable(R.drawable.ic_action_soso, getContext().getTheme());
+                                }else if (goodRbtn.isChecked()) {
                                     feeling = "Good";
-                                else if (happyRbtn.isChecked())
+                                    drawable = getContext().getResources().getDrawable(R.drawable.ic_action_good, getContext().getTheme());
+                                }else if (happyRbtn.isChecked()) {
                                     feeling = "Happy";
+                                    drawable = getContext().getResources().getDrawable(R.drawable.ic_action_happy, getContext().getTheme());
+                                }
 
-                                emoTv.setText(feeling);
+                                emoIv.setImageDrawable(drawable);
 
                                 String dateAndTime = eventList.get(index).getDate()+" "+eventList.get(index).getTime();
                                 timeTv.setText(dateAndTime);
 
 
                                 // update data in database
-                                db.daoAccess().updateEvent(id, storyEt.getText().toString()
-                                        , eventList.get(index).getFeeling());
+                                db.daoAccess().updateEvent(id, storyEt.getText().toString(), feeling);
                             }
                         }).setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                     @Override
@@ -234,5 +250,4 @@ public class TabFragment1 extends Fragment {
 
         return tap1View;
     }
-
 }
